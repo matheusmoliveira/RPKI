@@ -92,7 +92,7 @@ sudo apt update
 sudo apt install -y krill
 ```
 
-5. Configurar o Krill
+### 5. Configurar o Krill
 
 O script adiciona a seguinte linha ao arquivo de configuração /etc/krill.conf para vincular o serviço a todos os endereços IP:
 
@@ -106,7 +106,7 @@ Isso é feito adicionando a linha ao final do arquivo de configuração.
 sudo bash -c 'echo "ip = \"0.0.0.0\"" >> /etc/krill.conf'
 ```
 
-6. Iniciar e Habilitar o Serviço do Krill
+### 6. Iniciar e Habilitar o Serviço do Krill
 
 O script habilita o serviço do Krill para iniciar automaticamente na inicialização e inicia o serviço imediatamente:
 
@@ -114,7 +114,7 @@ O script habilita o serviço do Krill para iniciar automaticamente na inicializa
 sudo systemctl enable --now krill
 ```
 
-7. Verificar o Status do Serviço do Krill
+### 7. Verificar o Status do Serviço do Krill
 
 Você pode verificar o status do serviço do Krill com o seguinte comando:
 
@@ -122,7 +122,7 @@ Você pode verificar o status do serviço do Krill com o seguinte comando:
 sudo systemctl status krill
 ```
 
-8. Visualizar os Logs do Krill
+### 8. Visualizar os Logs do Krill
 
 Para visualizar os logs do serviço do Krill, o script usa journalctl:
 
@@ -130,7 +130,7 @@ Para visualizar os logs do serviço do Krill, o script usa journalctl:
 sudo journalctl --unit=krill
 ```
 
-9. Exibir o admin_token
+### 9. Exibir o admin_token
 
 O script extrai e exibe o admin_token do arquivo de configuração do Krill /etc/krill.conf:
 

@@ -52,9 +52,9 @@ O script realiza as seguintes etapas:
 
 O script começa atualizando a lista de pacotes do sistema para garantir que as versões mais recentes dos pacotes sejam instaladas.
 
-```bash
+<pre>
 sudo apt update
-```
+</pre>
 
 ### 2. Instalar Dependências
 
@@ -65,78 +65,78 @@ curl
 gnupg
 lsb-release
 
-```bash
+<pre>
 sudo apt install -y ca-certificates curl gnupg lsb-release
-```
+</pre>
 
 ### 3. Adicionar o Repositório NLnet Labs
 
 Ele baixa a chave GPG e adiciona o repositório oficial da NLnet Labs, que contém o pacote do Krill.
 
-```bash
+<pre>
 curl -fsSL https://packages.nlnetlabs.nl/aptkey.asc | sudo gpg --dearmor -o /usr/share/keyrings/nlnetlabs-archive-keyring.gpg
-```
+</pre>
 
 O script então adiciona o repositório ao sistema:
 
-```bash
+<pre>
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/nlnetlabs-archive-keyring.gpg] https://packages.nlnetlabs.nl/linux/debian $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/nlnetlabs.list > /dev/null
-```
+</pre>
 
 ### 4. Instalar o Krill
 
 Após atualizar a lista de pacotes novamente, o script instala o Krill:
 
-```bash
+<pre>
 sudo apt update
 sudo apt install -y krill
-```
+</pre>
 
 ### 5. Configurar o Krill
 
 O script adiciona a seguinte linha ao arquivo de configuração /etc/krill.conf para vincular o serviço a todos os endereços IP:
 
-```bash
+<pre>
 ip = "0.0.0.0"
-```
+</pre>
 
 Isso é feito adicionando a linha ao final do arquivo de configuração.
 
-```bash
+<pre>
 sudo bash -c 'echo "ip = \"0.0.0.0\"" >> /etc/krill.conf'
-```
+</pre>
 
 ### 6. Iniciar e Habilitar o Serviço do Krill
 
 O script habilita o serviço do Krill para iniciar automaticamente na inicialização e inicia o serviço imediatamente:
 
-```bash
+<pre>
 sudo systemctl enable --now krill
-```
+</pre>
 
 ### 7. Verificar o Status do Serviço do Krill
 
 Você pode verificar o status do serviço do Krill com o seguinte comando:
 
-```bash
+<pre>
 sudo systemctl status krill
-```
+</pre>
 
 ### 8. Visualizar os Logs do Krill
 
 Para visualizar os logs do serviço do Krill, o script usa journalctl:
 
-```bash
+<pre>
 sudo journalctl --unit=krill
-```
+</pre>
 
 ### 9. Exibir o admin_token
 
 O script extrai e exibe o admin_token do arquivo de configuração do Krill /etc/krill.conf:
 
-```bash
+<pre>
 echo "admin-token = $(sudo grep 'admin_token' /etc/krill.conf | head -n 1 | cut -d '"' -f2)"
-```
+</pre>
 
 ## Licença
 

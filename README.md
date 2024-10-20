@@ -60,10 +60,10 @@ sudo apt update
 
 O script instala as dependências necessárias para o Krill:
 
-ca-certificates
-curl
-gnupg
-lsb-release
+- ca-certificates
+- curl
+- gnupg
+- lsb-release
 
 <pre>
 sudo apt install -y ca-certificates curl gnupg lsb-release
